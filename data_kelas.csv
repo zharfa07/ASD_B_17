@@ -1,13 +1,11 @@
 Nama,Jabatan
 Z,Ketua Kelas
-H,Sekretaris
 D,Bendahara
-E,Anggota
-P,Anggota
-N,Anggota
+H,Sekretaris
 A,Anggota
 B,Anggota
 C,Anggota
+E,Anggota
 F,Anggota
 G,Anggota
 I,Anggota
@@ -15,9 +13,11 @@ J,Anggota
 K,Anggota
 L,Anggota
 M,Anggota
+N,Anggota
 O,Anggota
+P,Anggota
 Q,Anggota
 R,Anggota
 S,Anggota
-W,Anggota
 U,Anggota
+W,Anggota

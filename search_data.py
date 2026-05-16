@@ -12,8 +12,11 @@ def search_data():
     return
 
   if pilihan == "1":
-    keyword = input("Kata kunci: ").strip().lower()
+    keyword = input("Masukkan nama: ").strip().lower()
     hasil = [d for d in data if keyword in d["Nama"].lower()]
+    if not keyword:
+      print("Pilihan tidak valid")
+      return
   elif pilihan == "2":
     for i, j in enumerate(jabatan_valid, 1):
       print(f" {i}. {j}")

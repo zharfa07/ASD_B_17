@@ -1,7 +1,7 @@
 from config import jabatan_level
-from file_handling import baca_data
+from file_handling import baca_data, simpan_data
 
-def sort_data():
+def sort_data(stack):
   print("\n-- Urutkan Data --")
   print("1. Nama A-Z")
   print("2. Nama Z-A")
@@ -26,3 +26,8 @@ def sort_data():
   print("-" * 45)
   for i, d in enumerate(hasil, 1):
     print(f"{i:<5} {d['Nama']:<25} {d['Jabatan']}")
+    
+  if input("\nSimpan urutan ini ke file? (y/n): ").strip().lower() == "y":
+    simpan_data(hasil)
+    stack.push(f"SORT | {['A-Z','Z-A','Hierarki'][int(pilihan)-1]}")
+    print("Urutan berhasil disimpan")

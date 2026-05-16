@@ -34,7 +34,7 @@ while True:
   elif pilihan == "5":
     search_data()
   elif pilihan == "6":
-    sort_data()
+    sort_data(stack)
   elif pilihan == "7":
     read_tree()
   elif pilihan == "8":
