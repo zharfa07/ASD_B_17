@@ -1,11 +1,11 @@
 from stack import Stack
-from create_data import create_data
 from read_data import read_data
-from delete_data import delete_data
 from search_data import search_data
 from read_tree import read_tree
-from update_data import update_data
 from sort_data import sort_data
+from create_data import create_data
+from delete_data import delete_data
+from update_data import update_data
 
 stack = Stack()
 

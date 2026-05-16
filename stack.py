@@ -1,9 +1,18 @@
+import os
+
+RIWAYAT_FILE = "riwayat.txt"
+
 class Stack:
   def __init__(self):
     self.data = []
+    if os.path.exists(RIWAYAT_FILE):
+      with open(RIWAYAT_FILE, "r") as f:
+        self.data = [line.strip() for line in f.readlines()]
 
   def push(self, item):
     self.data.append(item)
+    with open(RIWAYAT_FILE, "a") as f:
+      f.write(item + "\n")
 
   def tampilkan(self):
     if not self.data:
@@ -11,3 +20,4 @@ class Stack:
     else:
       for item in reversed(self.data):
         print(" -", item)
+    
