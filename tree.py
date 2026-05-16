@@ -16,4 +16,4 @@ class Tree:
       return
     print(" " * (level * 4) + prefix + f"[{node.jabatan}] {node.nama}")
     for i, child in enumerate(node.children):
-      self.tampilkan(child, level + 1, "L--- " if i == 0 else "R--- ")
+      self.tampilkan(child, level + 1, "└── " if i == 0 else "└── ")

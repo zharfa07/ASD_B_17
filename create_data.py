@@ -20,6 +20,9 @@ def create_data(stack):
   if jabatan != "Anggota" and any(d["Jabatan"] == jabatan for d in data):
     print(f"Jabatan {jabatan} sudah ada")
     return
+  if any(d["Nama"].lower() == nama.lower() for d in data):
+    print(f"Nama '{nama}' sudah ada")
+    return
 
   data.append({"Nama": nama, "Jabatan": jabatan})
   simpan_data(data)

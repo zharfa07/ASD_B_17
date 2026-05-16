@@ -13,6 +13,11 @@ class Stack:
     self.data.append(item)
     with open(RIWAYAT_FILE, "a") as f:
       f.write(item + "\n")
+  
+  def clear(self):
+    self.data = []
+    open(RIWAYAT_FILE, "w").close()
+    print("Riwayat berhasil dihapus")
 
   def tampilkan(self):
     if not self.data:

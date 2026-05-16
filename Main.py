@@ -40,6 +40,12 @@ while True:
   elif pilihan == "8":
     print("\n-- Riwayat Aksi --")
     stack.tampilkan()
+    print("\n1. Hapus semua riwayat")
+    print("2. Kembali")
+    Pilihan = input("Pilih: ").strip()
+    if Pilihan == "1":
+      stack.clear()
+    stack.tampilkan()
   elif pilihan == "9":
     print("Program selesai")
     break
