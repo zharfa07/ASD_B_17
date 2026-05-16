@@ -17,14 +17,27 @@ def update_data(stack):
   nama_baru = input("Nama baru (Enter = tidak ubah): ").strip()
   if nama_baru == "" or any(c.isdigit() for c in nama_baru):
     nama_baru = target["Nama"]
+  elif any(c.isdigit() for c in nama_baru):
+    print("Nama tidak valid (mengandung angka)")
+    return
+  elif any(d["Nama"].lower() == nama_baru.lower() for d in data if d != target):
+      print(f"Nama '{nama_baru}' sudah ada")
+      return
 
   for i, j in enumerate(jabatan_valid, 1):
     print(f" {i}. {j}")
   pilihan = input("Jabatan baru (Enter = tidak ubah): ").strip()
-  if pilihan.isdigit() and (1 <= int(pilihan) <= len(jabatan_valid)):
-    jabatan_baru = jabatan_valid[int(pilihan) - 1]
-  else:
+  if pilihan == "":
     jabatan_baru = target["Jabatan"]
+  elif pilihan.isdigit() and (1 <= int(pilihan) <= len(jabatan_valid)):
+      jabatan_baru = jabatan_valid[int(pilihan) - 1]
+      if jabatan_baru != "Anggota" and jabatan_baru != target["Jabatan"]:
+          if any(d["Jabatan"] == jabatan_baru for d in data if d != target):
+              print(f"Jabatan {jabatan_baru} sudah ada")
+              return
+  else:
+      print("Pilihan tidak valid")
+      return
 
   stack.push(f"UBAH | {target['Nama']}/{target['Jabatan']} -> {nama_baru}/{jabatan_baru}")
   target["Nama"] = nama_baru
