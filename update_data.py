@@ -15,14 +15,14 @@ def update_data(stack):
   print(f"Data saat ini: {target['Nama']} | {target['Jabatan']}")
 
   nama_baru = input("Nama baru (Enter = tidak ubah): ").strip()
-  if nama_baru == "" or any(c.isdigit() for c in nama_baru):
-    nama_baru = target["Nama"]
-  elif any(c.isdigit() for c in nama_baru):
-    print("Nama tidak valid (mengandung angka)")
-    return
-  elif any(d["Nama"].lower() == nama_baru.lower() for d in data if d != target):
-      print(f"Nama '{nama_baru}' sudah ada")
+  if nama_baru == "":
+      nama_baru = target["Nama"]
+  elif any(c.isdigit() for c in nama_baru):   # ← pindah jadi elif terpisah
+      print("Nama tidak valid (mengandung angka)")
       return
+  elif any(d["Nama"].lower() == nama_baru.lower() for d in data if d != target):
+    print(f"Nama '{nama_baru}' sudah ada")
+    return
 
   for i, j in enumerate(jabatan_valid, 1):
     print(f" {i}. {j}")
