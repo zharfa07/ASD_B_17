@@ -7,7 +7,11 @@ def update_data(stack):
   read_data()
   nama_cari = input("\nNama yang ingin diubah: ").strip()
   data = baca_data()
-  target = next((d for d in data if d["Nama"].lower() == nama_cari.lower()), None)
+  target = None
+  for d in data:
+    if d["Nama"].lower() == nama_cari.lower():
+      target = d
+      break
   if not target:
     print("Data tidak ditemukan")
     return
@@ -17,7 +21,7 @@ def update_data(stack):
   nama_baru = input("Nama baru (Enter = tidak ubah): ").strip()
   if nama_baru == "":
       nama_baru = target["Nama"]
-  elif any(c.isdigit() for c in nama_baru):   # ← pindah jadi elif terpisah
+  elif any(c.isdigit() for c in nama_baru):
       print("Nama tidak valid (mengandung angka)")
       return
   elif any(d["Nama"].lower() == nama_baru.lower() for d in data if d != target):

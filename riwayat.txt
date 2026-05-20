@@ -2,3 +2,6 @@ TAMBAH | U | Anggota
 SORT | A-Z
 SORT | Hierarki
 UBAH | Z/Ketua Kelas -> Z/Ketua Kelas
+UBAH | W/Anggota -> wo/Anggota
+SORT | Hierarki
+UBAH | U/Anggota -> uu/Anggota
