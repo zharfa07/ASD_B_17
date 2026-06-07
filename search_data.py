@@ -22,10 +22,12 @@ def search_data():
     if not keyword:
       print("  Pilihan tidak valid")
       return
+    # cari nama yg mengandung keyword 
     hasil = []
     for d in data:
       if keyword in d["Nama"].lower():
         hasil.append(d)
+
   elif pilihan == "2":
     print("\n╔" + "═"*W + "╗")
     for i, j in enumerate(jabatan_valid, 1):
@@ -36,6 +38,7 @@ def search_data():
     if not p.isdigit() or not (1 <= int(p) <= len(jabatan_valid)):
       print("  Pilihan tidak valid")
       return
+    # filter berdasarkan jabatan yg dipilih
     hasil = []
     for d in data:
       if d["Jabatan"] == jabatan_valid[int(p) - 1]:

@@ -4,31 +4,32 @@ from file_handling import baca_data, simpan_data
 W = 28
 WT = 48
 
-def merge_sort(data, key_func):
+# merge sort: bagi list jadi 2, rekursif sort keduanya, terus gabung
+def merge_sort(data, key):
   if len(data) <= 1:
-    return data
+    return data  # base case
   mid = len(data) // 2
-  kiri = merge_sort(data[:mid], key_func)
-  kanan = merge_sort(data[mid:], key_func)
-  return gabung(kiri, kanan, key_func)
+  kiri = merge_sort(data[:mid], key)   # rekursif bagian kiri
+  kanan = merge_sort(data[mid:], key)  # rekursif bagian kanan
+  return gabung(kiri, kanan, key)
 
-def gabung(kiri, kanan, key_func):
+# gabungkan dua list yg urut jd satu list urut
+def gabung(kiri, kanan, key):
   hasil = []
-  i = 0
-  j = 0
+  i = 0  # pointer list kiri
+  j = 0  # pointer list kanan
+  # bandingin elemen terdepan kiri dan kanan, masukkin yg lebih kecil
   while i < len(kiri) and j < len(kanan):
-    if key_func(kiri[i]) <= key_func(kanan[j]):
+    if key(kiri[i]) <= key(kanan[j]):
       hasil.append(kiri[i])
       i += 1
     else:
       hasil.append(kanan[j])
       j += 1
-  while i < len(kiri):
-    hasil.append(kiri[i])
-    i += 1
-  while j < len(kanan):
-    hasil.append(kanan[j])
-    j += 1
+  # kalau masih ada sisa, tambahin ke hasil
+  hasil.extend(kiri[i:]) 
+  hasil.extend(kanan[j:])
+
   return hasil
 
 def sort_data(stack):
@@ -45,16 +46,20 @@ def sort_data(stack):
     return
 
   if pilihan == "1":
+    # key = nama lowercase biar A dan a dianggap sama
     hasil = merge_sort(data, lambda x: x["Nama"].lower())
   elif pilihan == "2":
+    # sort A-Z dulu lalu balik jadi Z-A
     hasil = merge_sort(data, lambda x: x["Nama"].lower())
     hasil.reverse()
   elif pilihan == "3":
+    # key = level hierarki dr config
     hasil = merge_sort(data, lambda x: jabatan_level.get(x["Jabatan"], 99))
   else:
     print("  Pilihan tidak valid")
     return
 
+  # tampilin hasil sort dalam box tabel
   print("\n╔" + "═"*WT + "╗")
   header = f"  {'No':<5} {'Nama':<25} {'Jabatan'}"
   print("║" + header.ljust(WT) + "║")

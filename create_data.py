@@ -7,6 +7,8 @@ def create_data(stack):
   print("\n╔" + "═"*W + "╗")
   print("║" + "TAMBAH ANGGOTA".center(W) + "║")
   print("╚" + "═"*W + "╝")
+
+  # validasi nama gk kosong sm gk mengandung angka
   nama = input("  Nama: ").strip()
   if not nama:
     print("  Nama tidak valid")
@@ -29,12 +31,14 @@ def create_data(stack):
   jabatan = jabatan_valid[int(pilihan) - 1]
   data = baca_data()
 
+  # jabatan unik yg boleh ada satu
   if jabatan != "Anggota":
     for d in data:
       if d["Jabatan"] == jabatan:
         print(f"  Jabatan {jabatan} sudah ada")
         return
 
+  # cek duplikat nama (case-insensitive)
   for d in data:
     if d["Nama"].lower() == nama.lower():
       print(f"  Nama '{nama}' sudah ada")

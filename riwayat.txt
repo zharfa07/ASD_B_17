@@ -1,6 +1,3 @@
-TAMBAH | U | Anggota
-SORT | A-Z
-SORT | Hierarki
-UBAH | Z/Ketua Kelas -> Z/Ketua Kelas
-TAMBAH | RISHAAD AULIA WYMAN NARDI | Anggota
-HAPUS | RISHAAD AULIA WYMAN NARDI | Anggota
+IMPORT TAMBAH | 17 data dari 111.csv
+IMPORT TAMBAH | 17 data dari 112.csv
+IMPORT REPLACE | 20 data dari 112.csv

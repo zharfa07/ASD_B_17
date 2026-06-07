@@ -12,9 +12,11 @@ def statistik():
     print("║" + "Data kosong".center(W) + "║")
     print("╚" + "═"*W + "╝")
     return
+  # tampilin total semua anggota
   baris = f"  Total anggota : {len(data)}"
   print("║" + baris + " "*(W - len(baris)) + "║")
   print("╠" + "═"*W + "╣")
+  # hitung jumlah tiap jabatan
   for jabatan in jabatan_valid:
     jumlah = 0
     for d in data:

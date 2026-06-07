@@ -11,9 +11,11 @@ def read_data():
     print("║" + "  Data kosong".ljust(WT) + "║")
     print("╚" + "═"*WT + "╝")
     return
+  # header kolom
   header = f"  {'No':<5} {'Nama':<25} {'Jabatan'}"
   print("║" + header.ljust(WT) + "║")
   print("╠" + "═"*WT + "╣")
+  # cetak tiap baris data, nmr mulai dr 1
   for i, d in enumerate(data, 1):
     baris = f"  {str(i):<5} {d['Nama']:<25} {d['Jabatan']}"
     print("║" + baris.ljust(WT) + "║")

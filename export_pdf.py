@@ -12,20 +12,23 @@ def export_pdf():
   nama_file = "data_kelas.pdf"
   c = canvas.Canvas(nama_file, pagesize=A4)
   lebar, tinggi = A4
-  y = tinggi - 50
+  y = tinggi - 50  # mulai dari atas dgn margin 50
 
+  # judul dan garis pemisah
   c.setFont("Helvetica-Bold", 14)
   c.drawString(50, y, "Data Struktur Kelas")
   y -= 10
   c.line(50, y, lebar - 50, y)
   y -= 25
 
+  # header tabel
   c.setFont("Helvetica-Bold", 11)
   c.drawString(50, y, f"{'No':<6}{'Nama':<30}Jabatan")
   y -= 5
   c.line(50, y, lebar - 50, y)
   y -= 18
 
+  # isi tabel, buat halaman baru kalau y hampir habis
   c.setFont("Helvetica", 11)
   for i, d in enumerate(data, 1):
     c.drawString(50, y, f"{str(i):<6}{d['Nama']:<30}{d['Jabatan']}")
@@ -39,6 +42,7 @@ def export_pdf():
   c.line(50, y, lebar - 50, y)
   y -= 20
 
+  # bagian statistik di bawah tabel
   c.setFont("Helvetica-Bold", 11)
   c.drawString(50, y, "Statistik:")
   y -= 18
@@ -47,6 +51,7 @@ def export_pdf():
   c.drawString(50, y, f"Total anggota: {len(data)}")
   y -= 18
 
+  # hitung dan cetak jumlah tiap jabatan
   for jabatan in jabatan_valid:
     jumlah = 0
     for d in data:

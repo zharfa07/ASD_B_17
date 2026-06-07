@@ -11,23 +11,26 @@ def delete_data(stack):
   nama_cari = input("\n  Nama yang ingin dihapus: ").strip()
   data = baca_data()
 
+  # cari data yg mau dihapus
   target = None
   for d in data:
     if d["Nama"].lower() == nama_cari.lower():
       target = d
-      break
+      break  # berhenti kalo nemu
 
   if not target:
     print("  Data tidak ditemukan")
     return
+  # konfirmasi sblm hapus
   if input(f"  Hapus '{target['Nama']}'? (y/n): ").strip().lower() != "y":
     print("  Dibatalkan")
     return
 
+  # buat list baru tanpa data yg dihapus
   data_baru = []
   for d in data:
     if d["Nama"].lower() != nama_cari.lower():
-      data_baru.append(d)
+      data_baru.append(d)  # masukkan semua ecuali yg dihapus
 
   simpan_data(data_baru)
   stack.push(f"HAPUS | {target['Nama']} | {target['Jabatan']}")
