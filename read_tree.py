@@ -2,10 +2,9 @@ from file_handling import baca_data
 from tree import TreeNode, Tree
 
 def read_tree():
-  print("\n-- Struktur Kelas --")
   data = baca_data()
   if not data:
-    print("Data kosong")
+    print("  Data kosong")
     return
 
   ketua, level2, anggota = None, [], []
@@ -19,7 +18,7 @@ def read_tree():
       anggota.append(node)
 
   if ketua is None:
-    print("Ketua Kelas belum ada")
+    print("  Ketua Kelas belum ada")
     return
 
   for node in level2:
@@ -29,4 +28,4 @@ def read_tree():
 
   tree = Tree()
   tree.root = ketua
-  tree.tampilkan()
+  tree.tampilkan("POHON KELAS")

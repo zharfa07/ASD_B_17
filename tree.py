@@ -8,12 +8,23 @@ class Tree:
   def __init__(self):
     self.root = None
 
-  def tampilkan(self, node=None, level=0, prefix="Root: "):
+  def kumpulkan(self, node=None, level=0, prefix="Root: "):
     if node is None:
       node = self.root
     if node is None:
-      print("Data kosong")
-      return
-    print(" " * (level * 4) + prefix + f"[{node.jabatan}] {node.nama}")
-    for i, child in enumerate(node.children):
-      self.tampilkan(child, level + 1, "└── " if i == 0 else "└── ")
+      return ["Data kosong"]
+    baris = " " * (level * 4) + prefix + f"[{node.jabatan}] {node.nama}"
+    hasil = [baris]
+    for child in node.children:
+      hasil += self.kumpulkan(child, level + 1, "└── ")
+    return hasil
+
+  def tampilkan(self, judul="POHON KELAS"):
+    baris_list = self.kumpulkan()
+    lebar = max(max(len(b) for b in baris_list) + 4, len(judul) + 4)
+    print("\n╔" + "═"*lebar + "╗")
+    print("║" + judul.center(lebar) + "║")
+    print("╠" + "═"*lebar + "╣")
+    for b in baris_list:
+      print("║  " + b.ljust(lebar - 2) + "║")
+    print("╚" + "═"*lebar + "╝")

@@ -6,22 +6,24 @@ from sort_data import sort_data
 from create_data import create_data
 from delete_data import delete_data
 from update_data import update_data
+from export_pdf import export_pdf
+from statistik import statistik
 
+W = 28
 stack = Stack()
 
 while True:
-  print("\n=== STRUKTUR KELAS ===")
-  print("1. Tambah Anggota")
-  print("2. Tampilkan Data")
-  print("3. Ubah Data")
-  print("4. Hapus Anggota")
-  print("5. Cari Anggota")
-  print("6. Urutkan Data")
-  print("7. Lihat Pohon Kelas")
-  print("8. Riwayat Aksi")
-  print("9. Keluar")
+  print("\n╔" + "═"*W + "╗")
+  print("║" + "STRUKTUR KELAS".center(W) + "║")
+  print("╠" + "═"*W + "╣")
+  for baris in ["  [1] Tambah Anggota","  [2] Tampilkan Data","  [3] Ubah Data",
+                "  [4] Hapus Anggota","  [5] Cari Anggota","  [6] Urutkan Data",
+                "  [7] Lihat Pohon Kelas","  [8] Riwayat Aksi","  [9] Statistik",
+                " [10] Export PDF","  [0] Keluar"]:
+    print("║" + baris.ljust(W) + "║")
+  print("╚" + "═"*W + "╝")
 
-  pilihan = input("Pilih menu: ").strip()
+  pilihan = input("  Pilih menu: ").strip()
 
   if pilihan == "1":
     create_data(stack)
@@ -38,16 +40,32 @@ while True:
   elif pilihan == "7":
     read_tree()
   elif pilihan == "8":
-    print("\n-- Riwayat Aksi --")
-    stack.tampilkan()
-    print("\n1. Hapus semua riwayat")
-    print("2. Kembali")
-    Pilihan = input("Pilih: ").strip()
+    riwayat = stack.tampilkan()
+    lebar = max((len(r) + 6 for r in riwayat), default=W)
+    lebar = max(lebar, W)
+    print("\n╔" + "═"*lebar + "╗")
+    print("║" + "RIWAYAT AKSI".center(lebar) + "║")
+    print("╠" + "═"*lebar + "╣")
+    if not riwayat:
+      print("║" + "  Riwayat kosong".ljust(lebar) + "║")
+    else:
+      for item in riwayat:
+        baris = f"  - {item}"
+        print("║" + baris.ljust(lebar) + "║")
+    print("╚" + "═"*lebar + "╝")
+    print("\n╔" + "═"*W + "╗")
+    print("║" + "  [1] Hapus semua riwayat".ljust(W) + "║")
+    print("║" + "  [2] Kembali".ljust(W) + "║")
+    print("╚" + "═"*W + "╝")
+    Pilihan = input("  Pilih: ").strip()
     if Pilihan == "1":
       stack.clear()
-    stack.tampilkan()
   elif pilihan == "9":
-    print("Program selesai")
+    statistik()
+  elif pilihan == "10":
+    export_pdf()
+  elif pilihan == "0":
+    print("  Program selesai")
     break
   else:
-    print("Input tidak valid")
+    print("  Input tidak valid")

@@ -2,3 +2,5 @@ TAMBAH | U | Anggota
 SORT | A-Z
 SORT | Hierarki
 UBAH | Z/Ketua Kelas -> Z/Ketua Kelas
+TAMBAH | RISHAAD AULIA WYMAN NARDI | Anggota
+HAPUS | RISHAAD AULIA WYMAN NARDI | Anggota
